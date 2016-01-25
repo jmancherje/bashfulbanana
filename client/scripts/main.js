@@ -37,7 +37,7 @@ var MessageContainer = React.createClass({
       messages: [{
         username: "joey",
         text: 'hello',
-        timestamp: 25
+        timestamp: '25'
       }]
     }
   }, 
@@ -45,12 +45,12 @@ var MessageContainer = React.createClass({
   formSubmit: function(message) {
     console.log('FORMSUBMIT MESSAGES', this.state.messages)
     console.log('MESSAGE', message); 
-    var messages = this.state.messages.push(message);
-    this.setState({messages: messages}); 
+    this.state.messages.push(message);
+    this.setState({messages: this.state.messages}); 
   },
 
   render: function() {
-    console.log(this.state.messages); 
+    console.log('this', this); 
     var messageList = this.state.messages.map(function(item, i) {
       return <MessageEntry key={i} message={item} />
     })
