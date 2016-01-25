@@ -24,11 +24,11 @@ var historyApiFallback = require('connect-history-api-fallback')
 gulp.task('styles',function() {
   // move over fonts
 
-  gulp.src('css/fonts/**.*')
+  gulp.src('client/css/fonts/**.*')
     .pipe(gulp.dest('client/build/css/fonts'))
 
   // Compiles CSS
-  gulp.src('css/style.styl')
+  gulp.src('client/css/style.styl')
     .pipe(stylus())
     .pipe(autoprefixer())
     .pipe(gulp.dest('./client/build/css/'))
