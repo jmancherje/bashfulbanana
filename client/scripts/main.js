@@ -32,15 +32,79 @@ var ContentContainer = React.createClass({
 });
 
 var MessageContainer = React.createClass({
-  render: function() {
-    return (
-      <div className="message-container">
-        <h2 className="text-center">Messages</h2>
+  getInitialState: function() {
+    return {
+      messages: [{
+        username: "joey",
+        text: 'hello',
+        timestamp: 25
+      }]
+    }
+  }, 
 
+  formSubmit: function(message) {
+    console.log('FORMSUBMIT MESSAGES', this.state.messages)
+    console.log('MESSAGE', message); 
+    var messages = this.state.messages.push(message);
+    this.setState({messages: messages}); 
+  },
+
+  render: function() {
+    console.log(this.state.messages); 
+    var messageList = this.state.messages.map(function(item, i) {
+      return <MessageEntry key={i} message={item} />
+    })
+    return (
+      <div>
+        <div className="message-container">
+          <h2 className="text-center">Messages</h2>
+          {messageList}
+        </div>
+        <MessageForm formSubmit={this.formSubmit}/>
       </div>
     )
   }
 });
+
+var MessageEntry = React.createClass({
+  render: function() {
+    return (
+      <div>
+        {this.props.message.username}
+        {this.props.message.text}
+        {this.props.message.timestamp}
+      </div>
+    )
+  }
+});
+
+var MessageForm = React.createClass({
+  localSubmit: function(event) {
+    event.preventDefault();
+    console.log('test');
+    var username = this.refs.username.value;
+    var messageText = this.refs.message.value;
+    var messageObj = {
+      username: username,
+      text: messageText,
+      timestamp: 'string'
+    }
+    this.props.formSubmit(messageObj); 
+  },
+
+  render: function() {
+    return (
+      <div>
+        <form onSubmit={this.localSubmit}>
+          Username: <input type='text' name='username' ref='username'/>
+          <textarea name="comment" id="messageInput" cols="30" rows="10" ref='message'>
+          </textarea>
+          <input type="submit" value='submit'/>
+        </form>
+      </div>
+    )
+  }
+})
 
 var ChoreContainer = React.createClass({
   render: function() {
