@@ -3,11 +3,14 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var db = require('./db/index');
+var cors = require('cors');
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 8080));
 
-app.use('/', express.static(path.join(__dirname, 'client')));
 app.use(bodyParser.json());
+app.use('/', express.static(path.join(__dirname, 'client')));
+app.use(cors()); 
 
 require('./config/routes.js')(app, express);
 

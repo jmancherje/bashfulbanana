@@ -108,3 +108,26 @@ gulp.task('default', ['images','styles','scripts','browser-sync'], function() {
   gulp.watch('client/css/**/*', ['styles']); // gulp watch for stylus changes
   return buildScript('main.js', true); // browserify watch for JS changes
 });
+
+// gulp.task('browser-sync', ['nodemon'], function() {
+//   browserSync.init(null, {
+//     proxy: 'http://localhost:3000',
+//     files: ['client/**/*.*'],
+//     browser: 'google chrome',
+//     port: 7000,
+//   })
+// })
+
+// gulp.task('nodemon', function(cb) {
+//   var started = false;
+//   return nodemon({
+//     script: './server/server.js'
+//   }).on('start', function() {
+//     if(!started) {
+//       cb();
+//       started = true; 
+//     }
+//   });
+// });
+
+

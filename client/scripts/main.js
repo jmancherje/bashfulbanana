@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 var App = React.createClass({
   getInitialState: function() {
@@ -34,19 +35,23 @@ var ContentContainer = React.createClass({
 var MessageContainer = React.createClass({
   getInitialState: function() {
     return {
-      messages: [{
-        username: "joey",
-        text: 'hello',
-        timestamp: '25'
-      }]
+      messages: []
     }
   }, 
 
-  formSubmit: function(message) {
-    console.log('FORMSUBMIT MESSAGES', this.state.messages)
-    console.log('MESSAGE', message); 
-    this.state.messages.push(message);
-    this.setState({messages: this.state.messages}); 
+  formSubmit: function(message) { 
+    console.log('MESSAGE', message);
+    $.ajax({
+      url: 'http://localhost:8080/messages',
+      type: 'POST',
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+      success: function(data) {
+        console.log('got here'); 
+        this.state.messages.push(message);
+        this.setState({messages: this.state.messages});
+      }.bind(this)
+    });
   },
 
   render: function() {
@@ -70,9 +75,9 @@ var MessageEntry = React.createClass({
   render: function() {
     return (
       <div>
-        {this.props.message.username}
+        {this.props.message.userId}
         {this.props.message.text}
-        {this.props.message.timestamp}
+        {this.props.message.houseId}
       </div>
     )
   }
@@ -85,18 +90,19 @@ var MessageForm = React.createClass({
     var username = this.refs.username.value;
     var messageText = this.refs.message.value;
     var messageObj = {
-      username: username,
+      userId: username,
       text: messageText,
-      timestamp: 'string'
+      houseId: 1
     }
-    this.props.formSubmit(messageObj); 
+    this.props.formSubmit(messageObj);
+    this.refs.messageForm.reset()
   },
 
   render: function() {
     return (
       <div>
-        <form onSubmit={this.localSubmit}>
-          Username: <input type='text' name='username' ref='username'/>
+        <form ref='messageForm' onSubmit={this.localSubmit}>
+          UserId: <input type='text' name='username' ref='username'/>
           <textarea name="comment" id="messageInput" cols="30" rows="10" ref='message'>
           </textarea>
           <input type="submit" value='submit'/>

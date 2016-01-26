@@ -12,7 +12,8 @@ module.exports = {
     });
   },
   post: function(req, res) {
-    var params = [req.body.userId, req.body.text, req.body.houseId];
+    console.log('req is', req.body);
+    var params = [req.body.userId, req.body.text, req.body.houseId]
 
     messageModel.post(params, function(err, results) {
       if (err) {
