@@ -73,5 +73,16 @@ module.exports = {
         res.json(results);
       }
     })
+  },
+  leaveHouse: function(req, res) {
+    var token = JSON.parse(jwt.decode(JSON.parse(req.headers.token), process.env.secret_code));
+    var params = [token.userid];
+    userModel.leaveHouse(params, function(err, results) {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.json(results);
+      }
+    })
   }
 }

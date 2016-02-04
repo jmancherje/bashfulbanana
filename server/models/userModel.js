@@ -37,6 +37,12 @@ module.exports = {
     db.query(queryStr, params, function(err, results) {
       callback(err, results);
     });
+  },
+  leaveHouse: function(params, callback) {
+    var queryStr = "UPDATE Users SET houseId=null WHERE id = ?";
+    db.query(queryStr, params, function(err, results) {
+      callback(err, results);
+    });
   }
 }
 

@@ -55,6 +55,7 @@ module.exports = function(app, express) {
   app.post('/users', userController.postUser);
   app.put('/users', userController.putUser);
   app.get('/users/images', userController.getUserImage);
+  app.put('/users/leave', userController.leaveHouse);
   //app.get('/users/house', userController.checkIfUserHasHouse)
 
   //Messages

@@ -104,6 +104,22 @@ var App = React.createClass({
       }
     });
   },
+
+  leaveHouse: function() {
+    $.ajax({
+      url: '/users/leave',
+      type: 'PUT',
+      contentType: 'application/json',
+      headers: {'token': localStorage.getItem('obie')},
+      success: function(code) {
+        window.location.href="/registration";
+      }.bind(this),
+      error: function() {
+        console.log('error');
+      }
+    });
+  },
+
   toggleHouseCode: function () {
     $('.toggle-house-code').toggle('slow');
   },
@@ -131,6 +147,7 @@ var App = React.createClass({
                 <ul className="sidebar-roommate-ul">{roommates}</ul>
                 <button className="btn btn-info submit-message-button text-center" onClick={this.toggleHouseCode}>Get House Code</button>
                 <p className="toggle-house-code">Your house code is: {this.state.houseCode}</p>
+                <button className="btn btn-danger submit-message-button text-center" onClick={this.leaveHouse}>Leave House</button>
               </div>
             </div>
           </div>
