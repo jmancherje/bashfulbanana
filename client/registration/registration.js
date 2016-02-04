@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
   $.ajax({
     url: '/obie/',
     type: 'GET',
@@ -132,8 +130,7 @@ $(document).ready(function() {
   // routing to correct form:
   // landlord
   $('#show-landlord').on('click', function() {
-    $('#create-house-div-landlord').show('slow');
-    $('#landlord-or-tenant').hide('slow');
+    window.location.href = '/registration/landlordRegistration.html'
   });
 
   // tenant
