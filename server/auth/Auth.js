@@ -5,6 +5,8 @@ var isLoggedIn = function(req) {
   return req.session && req.session.jwt;
 };
 
+// may need to add new routing to get landlord to correct location
+
 module.exports.checkHouse = function(req, res, next) {
   userController.getHouseOfUser(); 
   if(token.houseId === null) {

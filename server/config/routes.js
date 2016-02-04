@@ -95,7 +95,7 @@ module.exports = function(app, express) {
   app.use('/login', express.static('client/login'));
   app.use('/', Auth.checkUser, express.static('client'));
   app.use('/landlord', Auth.checkUser, express.static('landlordclient'));
-  app.use('/registration', Auth.checkUser, express.static('client/registration.html'));
+  app.use('/registration', Auth.checkUser, express.static('client/registration'));
 
   app.get('/obie', function(req, res) {
     res.send(JSON.stringify(req.session.jwt));

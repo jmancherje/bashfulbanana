@@ -129,6 +129,19 @@ $(document).ready(function() {
   // store session:
   getSession();
 
+  // routing to correct form:
+  // landlord
+  $('#show-landlord').on('click', function() {
+    $('#create-house-div-landlord').show('slow');
+    $('#landlord-or-tenant').hide('slow');
+  });
+
+  // tenant
+  $('#show-tenant').on('click', function() {
+    $('#create-house-div').show('slow');
+    $('#landlord-or-tenant').hide('slow');
+  });
+
   // create a house
   $('#create-house-submit').on('click', createHouse);
 
@@ -141,6 +154,7 @@ $(document).ready(function() {
     findHouse();
   });
 
+  // tenant
   // show join house div on button click
   $('#join-house-btn').on('click', function(event) {
     event.preventDefault();
