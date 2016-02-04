@@ -14,7 +14,7 @@ module.exports = {
         req.session.regenerate(function() {
           var userToken = JSON.parse(jwt.decode(encryptedToken, process.env.secret_code));
           userToken.houseId = results[0].houseId;
-          var encodedJwt = JSON.stringify(jwt.encode(JSON.stringify(userToken), process.env.secret_code));
+          var encodedJwt = (jwt.encode(JSON.stringify(userToken), process.env.secret_code));
           req.session.jwt = encodedJwt;
           res.json(encodedJwt);
         });

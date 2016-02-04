@@ -73,6 +73,7 @@ $(document).ready(function() {
   };
 
   // need to test
+  // need to update query to post address too
   var createHouse = function(event) {
     event.preventDefault();
     if (!$('#create-house-form').valid()) {
