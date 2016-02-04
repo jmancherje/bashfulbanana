@@ -214,7 +214,6 @@ var FinanceContainer = React.createClass({
 var BillEntry = React.createClass({
   getDate: function() {
     var date = h.getDate(this.props.bill.dueDate);
-    console.log(date);
     return `${date.month}/${date.day}/${date.year}`;
   },
 

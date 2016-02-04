@@ -24,9 +24,11 @@ var Notify = React.createClass({
     this.loadMessages();
   },
 
+
+  // get messages for landlord chat
   loadMessages: function() {
     $.ajax({
-      url: '/messages',
+      url: '/messages/landlord',
       type: 'GET',
       contentType: 'application/json',
       headers: {'token': localStorage.getItem('obie')},
@@ -40,9 +42,10 @@ var Notify = React.createClass({
     })
   },
 
+  // send message to landlord chat
   formSubmit: function(message) {
     $.ajax({
-      url: '/messages',
+      url: '/messages/landlord',
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
@@ -52,7 +55,6 @@ var Notify = React.createClass({
         socket.emit('message', message);
       }.bind(this)
     });
-
   },
 
   render: function() {
@@ -61,7 +63,7 @@ var Notify = React.createClass({
     })
     return (
       <div className="message-container">
-        <h2 className="text-center">Messages</h2>
+        <h2 className="text-center">Communicate With Tenants</h2>
         <div className="message-list">
           {messageList}
         </div>

@@ -6,9 +6,9 @@ module.exports = {
     //extract house name from req.body
     var name = req.body.name
     //insert that name into params
-    var address = req.body.address || null;
-    var userId = token.userid;
-    var params = [name, address, userId];
+    // var address = req.body.address || null;
+    // var userId = token.userid;
+    var params = [name];
     houseModel.postHouse(params, function(err, results) {
       if(err) {
         res.sendStatus(500);

@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = {
   postHouse: function(params, callback) {
     //set up query string to insert house entity in db
-    var queryStr = 'INSERT INTO House (name, address, token) VALUES (?, ?, (RAND() * 1000000))';
+    var queryStr = 'INSERT INTO House (name, token) VALUES (?, (RAND() * 1000000))';
     //make the query with the callback being passed in
     db.query(queryStr, params, function(err, results) {
       callback(err, results); 

@@ -60,6 +60,9 @@ module.exports = function(app, express) {
   //Messages
   app.get('/messages', messageController.get);
   app.post('/messages', messageController.post);
+  //Landlord Messages
+  app.get('/messages/landlord', messageController.getLandlordChat)
+  app.post('/messages/landlord', messageController.postToLandlordChat)
 
   //Chores
   app.get('/chores/', choreController.get);

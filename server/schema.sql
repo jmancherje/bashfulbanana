@@ -82,6 +82,7 @@ CREATE TABLE `Messages` (
   `text` MEDIUMTEXT NOT NULL,
   `houseId` INT NOT NULL,
   `time` DATETIME NOT NULL,
+  `landlordChat` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 );
 
