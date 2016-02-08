@@ -284,20 +284,28 @@ var PaymentOwedEntry = React.createClass({
 })
 
 var BillHistory = React.createClass({
+  getDate: function() {
+    var date = h.getDate(this.props.history.dueDate);
+    return `${date.month}/${date.day}/${date.year}`;
+  },
   render: function() {
     return (
       <div>
-        You paid {this.props.history.whoIsOwed} ${this.props.history.amount} for {this.props.history.billName} 
+        You paid {this.props.history.whoIsOwed} ${this.props.history.amount} for {this.props.history.billName} on {this.getDate()}
       </div>
     )
   }
 })
 
 var PaymentHistory = React.createClass({
+  getDate: function() {
+    var date = h.getDate(this.props.history.dueDate);
+    return `${date.month}/${date.day}/${date.year}`;
+  },
   render: function() {
     return (
       <div>
-        {this.props.history.ower} paid you ${this.props.history.amount} for {this.props.history.billName}
+        {this.props.history.ower} paid you ${this.props.history.amount} for {this.props.history.billName} on {this.getDate()}
       </div>
     )
   }

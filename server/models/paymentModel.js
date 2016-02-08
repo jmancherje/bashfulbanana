@@ -52,7 +52,7 @@ module.exports = {
   },
 
   markPaymentAsPaid: function(params, callback) {
-    var queryStr = "update Payment SET paid=1 WHERE id=?";
+    var queryStr = "update Payment SET paid=1, datePaid=NOW() WHERE id=?";
     
     db.query(queryStr, params, function (err, results) {
       callback(err, results)
