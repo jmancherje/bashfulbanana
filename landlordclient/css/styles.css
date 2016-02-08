@@ -136,13 +136,13 @@ div.message-entry:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 .message-entry-landlord {
-  background-color: rgba(229, 0, 0, 0.05);
+  background-color: rgba(229, 0, 0, 0.09);
   width: 100%;
   padding: 5px;
   margin-bottom: 7px;
 }
 .message-entry-landlord:hover {
-  background-color: rgba(229, 0, 0, 0.11);
+  background-color: rgba(229, 0, 0, 0.14);
 }
 .message-username {
   font-weight: bold;
@@ -409,6 +409,10 @@ div.chore-entry:hover {
 }
 .tenant-list {
   list-style: none;
+}
+.tenant-image {
+  max-width: 50px;
+  max-height: 50px;
 }
 .propertyAdder-form {
   margin-top: 25px;
