@@ -12,7 +12,7 @@ module.exports = {
 
   createHouse: function(params, callback) {
     //set up query string to insert house entity in db
-    var queryStr = 'INSERT INTO House (name, address, token, landlordId) VALUES (?, ?, (RAND() * 1000000), ?)';
+    var queryStr = 'INSERT INTO House (name, address, token, landlordId) VALUES (?, ?, ?, ?)';
     //make the query with the callback being passed in
     db.query(queryStr, params, function(err, results) {
       callback(err, results); 

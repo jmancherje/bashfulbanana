@@ -9,7 +9,6 @@ var idGenerator = function () {
   return text;
 }
 
-console.log(idGenerator());
 module.exports = {
   postHouse: function(req, res) {
     //extract house name from req.body
@@ -31,13 +30,14 @@ module.exports = {
 
   createHouse: function(req, res) {
     var token = (jwt.decode(req.headers.token, process.env.secret_code));
+    var code = idGenerator();
     console.log('CREATE HOUSE TOKEN: ', token);
     //extract house name from req.body
     var name = req.body.name
     //insert that name into params
     var address = req.body.address || null;
     var userId = token.userid;
-    var params = [name, address, userId];
+    var params = [name, address, code, userId];
     houseModel.createHouse(params, function(err, results) {
       if(err) {
         res.sendStatus(500);
