@@ -85,7 +85,7 @@ html, body {
   width: 50%;
   height: inherit;
   margin: 0 auto;
-  border-radius: 25%;
+  border-radius: 18%;
 }
 .profile-image > .username {
   /*text-align: left;*/
@@ -132,7 +132,7 @@ html, body {
   padding: 5px;
   margin-bottom: 7px;
   background-color: rgba(138, 138, 138, 0.1);
-  border-radius: 20px;
+  border-radius: 10px;
   padding-bottom: 11px;
 }
 div.message-entry:hover {
@@ -143,7 +143,7 @@ div.message-entry:hover {
   width: 100%;
   padding: 5px;
   margin-bottom: 7px;
-  border-radius: 20px;
+  border-radius: 10px;
   padding-bottom: 11px;
 }
 .message-entry-landlord:hover {
@@ -216,6 +216,15 @@ div.message-entry:hover {
 
 .chore-entry {
   width: 100%;
+  background-color: rgba(138, 138, 138, 0.1);
+  margin-bottom: 7px;
+  padding: 7px 9px 5px 10px;
+  min-height: 42px;
+  border-radius: 10px;
+}
+
+div.chore-entry:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .chore-list {
@@ -233,9 +242,6 @@ div.message-entry:hover {
   margin: 15px 15px 15px 15px;
 }
 
-div.chore-entry:hover {
-  background-color: rgba(138, 138, 138, 0.1);
-}
 
 .chore-id {
   font-weight: bold;
@@ -274,8 +280,7 @@ div.chore-entry:hover {
 
 .chore-complete {
   float: right;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .chore-div-middle {
@@ -284,8 +289,6 @@ div.chore-entry:hover {
 .chore-image {
   height: 50px;
   width: 50px;
-  margin-top: 10px;
-  margin-right: 25px;
   float: right;
 }
 .chore-name {
@@ -332,8 +335,9 @@ div.chore-entry:hover {
 .bill-entry-container {
   background-color: rgba(138, 138, 138, 0.1);
   margin-bottom: 7px;
-  padding: 5px;
+  padding: 7px 9px 5px 10px;
   min-height: 42px;
+  border-radius: 10px;
 }
 .bill-entry-container:hover {
   background-color: rgba(0, 0, 0, 0.1);
