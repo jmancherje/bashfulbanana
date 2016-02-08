@@ -101,6 +101,12 @@ html, body {
 }
 .toggle-house-code {
   display: none;
+  padding: 10px 6px 3px 16px;
+  border-radius: 0 0 16px 16px;
+  background-color: aliceblue;
+}
+.house-code {
+  font-weight: 800;
 }
 /*
   Message Container Styles  

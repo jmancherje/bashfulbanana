@@ -182,8 +182,11 @@ var App = React.createClass({
                 <h3 className="text-center">{this.state.houseName}</h3>
                 <h4>Roommates:</h4>
                 <ul className="sidebar-roommate-ul">{roommates}</ul>
-                <button className="btn btn-info submit-message-button text-center" onClick={this.toggleHouseCode}>Get House Code</button>
-                <p className="toggle-house-code">Your house code is: {this.state.houseCode}</p>
+                <button className="btn btn-info submit-message-button text-center" onClick={this.toggleHouseCode}>Invite Roommates</button>
+                <div className="toggle-house-code">
+                  <p>Share this house code with your roommates</p>
+                  <p className="house-code">{this.state.houseCode}</p>
+                </div>
               </div>
             </div>
           </div>
