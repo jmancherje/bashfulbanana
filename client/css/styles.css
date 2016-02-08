@@ -176,6 +176,7 @@ div.message-entry:hover {
 }
 .username > p {
   font-weight: 600;
+  margin-bottom: 0;
   font-size:1.1em;
 }
 .submit-message-button {

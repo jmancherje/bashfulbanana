@@ -180,6 +180,7 @@ div.message-entry:hover {
 .username > p {
   font-weight: 600;
   font-size:1.1em;
+  margin-bottom: 0;
 }
 .submit-message-button {
     margin-top: 10px;
