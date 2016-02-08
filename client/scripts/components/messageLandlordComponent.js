@@ -56,7 +56,7 @@ var LandlordMessageContainer = React.createClass({
     })
     return (
       <div className="message-container">
-        <h2 className="text-center">Messages</h2>
+        <h2 className="text-center">Landlord Chat</h2>
         <div className="message-list">
           {messageList}
         </div>
