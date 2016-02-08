@@ -23,7 +23,7 @@ module.exports = {
     var token = jwt.decode(req.headers.token, process.env.secret_code);
     // var token = JSON.parse(jwt.decode(req.headers.token, process.env.secret_code));
     console.log('GET WHAT IS OWED TO YOU TOKEN: ', token);
-    var params = [token.userid];
+    var params = [token.userid, token.userid];
     models.getWhatIsOwedToYou(params, function(err, paymentOwed) {
       if (err) {
         res.sendStatus(404);

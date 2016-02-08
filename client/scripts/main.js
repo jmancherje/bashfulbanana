@@ -179,7 +179,8 @@ var App = React.createClass({
             <div className="side-bar-filler">
               <ImageContainer imageUrl={this.state.imageUrl}  />
               <div>
-                <h3>{this.state.houseName}</h3>
+                <h3 className="text-center">{this.state.houseName}</h3>
+                <h4>Roommates:</h4>
                 <ul className="sidebar-roommate-ul">{roommates}</ul>
                 <button className="btn btn-info submit-message-button text-center" onClick={this.toggleHouseCode}>Get House Code</button>
                 <p className="toggle-house-code">Your house code is: {this.state.houseCode}</p>
