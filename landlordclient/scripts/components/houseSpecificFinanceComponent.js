@@ -131,7 +131,7 @@ var houseSpecificFinance = React.createClass({
         <h2 className="text-center">Pending Charges</h2>
         <div className="finance-list">
           <div className='bill-list'>
-            {billList}
+            {paymentsOwedList}
           </div>
         </div>
         <BillForm createPayments={this.createPayments} addPayment={this.addPayment} addBill={this.addBill} users={this.state.users}/>
@@ -204,10 +204,21 @@ var BillEntry = React.createClass({
 }); 
 
 var PaymentOwedEntry = React.createClass({
+  getDate: function() {
+    var date = h.getDate(this.props.paymentOwed.dueDate);
+    console.log(date);
+    return `${date.month}/${date.day}/${date.year}`;
+  },
   render: function() {
     return (
-      <div>
-        {this.props.paymentOwed.ower} owes you {this.props.paymentOwed.amount} for {this.props.paymentOwed.billName}
+      <div className="bill-entry-container">
+        <div className="row">
+          <div className="col-xs-8">
+            <p><span className="who-is-owed">{this.props.paymentOwed.ower}</span> owes you </p> 
+            <p><span className="who-is-owed">{formatPrice(this.props.paymentOwed.amount * 100)}</span> for <span className="who-is-owed">{this.props.paymentOwed.billName}</span></p>
+            <p> by {this.getDate()}</p>
+          </div>
+        </div>
       </div>
     )
   }
