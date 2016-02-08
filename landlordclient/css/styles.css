@@ -288,7 +288,7 @@ div.chore-entry:hover {
   height: 100%;
 }
 .finance-list {
-  max-height: calc(100% - 225px);
+  max-height: calc(100% - 50px);
 }
 .custom-split-container {
   margin-top: 10px;
