@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import h from '../helpers';
+var socket = io();
 
 var formatPrice = function(cents) {
   return '$' + ( (cents / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") );
@@ -22,6 +23,7 @@ var houseSpecificFinance = React.createClass({
   componentDidMount: function() {
     this.getUsers(); 
     this.loadPayments();
+    socket.on('bill', this.loadPayments);
   },
 
   getUsers: function() {
@@ -48,6 +50,7 @@ var houseSpecificFinance = React.createClass({
       success: function(id) {
         this.createPayments(id)
         this.loadBills();
+        socket.emit('bill');
       }.bind(this)
     });
   },
@@ -62,6 +65,7 @@ var houseSpecificFinance = React.createClass({
       contentType: 'application/json',
       success: function(data) {
         // this.loadPayments()
+        socket.emit('bill');
         console.log("payment added");
       }
     });

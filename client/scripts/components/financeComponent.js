@@ -16,13 +16,10 @@ var FinanceContainer = React.createClass({
   getInitialState: function() {
     return {
       bills: [],
-      // payments: [],
       paymentsOwed: [], 
       billHistory: [],
       paymentHistory: [],
       users: []
-      //eventually need to get real houseId/userId - use Justin's login to query
-      //database with userId to get that user's houseId
     }
   },
 
@@ -35,11 +32,7 @@ var FinanceContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    if (this.props.initialLoad) {
-      setTimeout(this.loadData, 500);
-    } else {
-      this.loadData();
-    }
+    this.loadData();
     socket.on('bill', this.loadData);
   },
 
@@ -83,10 +76,6 @@ var FinanceContainer = React.createClass({
     });
   },
 
-  //addBill is a function that will take a new created bill and post it
-  //to the database. However, we don't have that route set up yet,
-  //and need to verify schema as well. This should go in finance container. 
-  
   addBill: function(bill) {
     console.log("Add Bill")
     $.ajax({
@@ -124,7 +113,6 @@ var FinanceContainer = React.createClass({
     var users = this.state.users;
     //iterate through users
     for(var i = 0; i < users.length; i++) {
-      //console.log('USER', users[i]);
       //find the ones selected
       if(users[i].selected === true) {
         //create payment object
@@ -243,6 +231,7 @@ var BillEntry = React.createClass({
       success: function(data) {
         console.log("venmo paid", "venmo data id", venmoData.id);
         this.markPaymentAsPaid(venmoData.id);
+        socket.emit('bill');
       }.bind(this)
     });
   },
@@ -265,8 +254,8 @@ var BillEntry = React.createClass({
       <div className="bill-entry-container">
         <div className="row">
           <div className="col-xs-8">
-            <p>You owe <span className="who-is-owed">{this.props.bill.whoIsOwed}</span></p> 
-            <p><span className="who-is-owed">{formatPrice(this.props.bill.amount * 100)}</span> for <span className="who-is-owed">{this.props.bill.billName}</span></p>
+            <p><span className="glyphicon glyphicon-unchecked"></span> You owe <span className="who-is-owed">{this.props.bill.whoIsOwed}</span>
+            <span className="who-is-owed"> {formatPrice(this.props.bill.amount * 100)}</span> for <span className="who-is-owed">{this.props.bill.billName}</span></p>
             <p> by {this.getDate()}</p>
           </div>
           <div className="col-xs-4">
@@ -286,13 +275,9 @@ var PaymentOwedEntry = React.createClass({
   render: function() {
     return (
       <div className="bill-entry-container">
-        <div className="row">
-          <div className="col-xs-8">
-            <p><span className="who-is-owed">{this.props.paymentOwed.ower}</span> owes you </p> 
-            <p><span className="who-is-owed">{formatPrice(this.props.paymentOwed.amount * 100)}</span> for <span className="who-is-owed">{this.props.paymentOwed.billName}</span></p>
-            <p> by {this.getDate()}</p>
-          </div>
-        </div>
+        <p><span className="glyphicon glyphicon-unchecked"></span><span className="who-is-owed"> {this.props.paymentOwed.ower}</span> owes you 
+        <span className="who-is-owed"> {formatPrice(this.props.paymentOwed.amount * 100)}</span> for <span className="who-is-owed">{this.props.paymentOwed.billName}</span></p>
+        <p> by {this.getDate()}</p>
       </div>
     )
   }
