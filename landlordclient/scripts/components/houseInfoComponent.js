@@ -35,11 +35,19 @@ var HouseInfo = React.createClass({
       return <User key={index} tenant={tenant} />
     });
     return (
-      <div className="message-container">
+      <div className="house-info-container">
         <h2 className="text-center">{this.props.currentHouse.name}</h2>
+        <h4 className="house-info-header">Address:</h4>
         <p>{this.props.currentHouse.address}</p>
-        <div className="message-list">
-          <ul>{tenantList}</ul>
+        <h4 className="house-info-header">House Code</h4>
+        <p>Invite your tenants by sharing this code:</p>
+        <p>{this.props.currentHouse.token}</p>
+        <h4 className="house-info-header">Current tenants:</h4>
+        <div>
+          <ul className="tenant-list">{tenantList}</ul>
+        </div>
+        <div className="bottom-button">
+          <button className="btn btn-danger">Remove House</button>
         </div>
       </div>
     )

@@ -117,5 +117,19 @@ module.exports = {
     request.post('https://api.venmo.com/v1/payments', {form: obj}, function(e, r, venmo_receipt){
         res.json(venmo_receipt);
     });
+  }, 
+
+  getPaymentsByHouseId: function(req, res) {
+    var token = jwt.decode(req.headers.token, process.env.secret_code);
+    var params = [token.userid, req.params.houseId];
+    console.log('get payments by house id for house specific payments, userId  + houseid:', params);
+    models.getPaymentsByHouseId(params, function (err, payment) {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.json(payment);
+      }
+    });
   }
+
 }

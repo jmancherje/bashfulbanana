@@ -74,9 +74,15 @@ var Notify = React.createClass({
 });
 
 var MessageEntry = React.createClass({
+  decideClassName: function() {
+    if (this.props.message.isLandlord) {
+      return " message-entry-landlord"
+    }
+    return "message-entry";
+  },
   render: function() {
     return (
-      <div className="message-entry">
+      <div className={this.decideClassName()}>
         <div className="row">
           <div className="col-xs-3 message-entry-left-box">
             <div className="profile-image">

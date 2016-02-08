@@ -10,21 +10,18 @@ var formatPrice = function(cents) {
 
 var houseSpecificFinance = React.createClass({
   getInitialState: function() {
-    this.loadBills();
-    this.getUsers(); 
-    this.loadPayments();
-    var userId = localStorage.getItem('userId');
-    this.userId = userId;
     return {
       bills: [],
-      // payments: [],
       paymentsOwed: [], 
       billHistory: [],
       paymentHistory: [],
-      users: [],
-      //eventually need to get real houseId/userId - use Justin's login to query
-      //database with userId to get that user's houseId
+      users: []
     }
+  },
+
+  componentDidMount: function() {
+    this.getUsers(); 
+    this.loadPayments();
   },
 
   getUsers: function() {
@@ -105,11 +102,12 @@ var houseSpecificFinance = React.createClass({
   
   loadPayments: function () {
     $.ajax({
-      url: '/payment/owed',
+      url: '/payment/owed/' + this.props.currentHouse.id,
       type: 'GET',
       contentType: 'application/json',
       headers: {'token': localStorage.getItem('obie')},
       success: function(payments) {
+        console.log('found payments: ', payments);
         this.setState({paymentsOwed: payments});
       }.bind(this),
       error: function(err) {
@@ -128,7 +126,7 @@ var houseSpecificFinance = React.createClass({
     });
     return (
       <div className="finance-container">
-        <h2 className="text-center">Pending Charges</h2>
+        <h3 className="text-center">{this.props.currentHouse.name}: Pending Charges</h3>
         <div className="finance-list">
           <div className='bill-list'>
             {paymentsOwedList}
@@ -212,13 +210,9 @@ var PaymentOwedEntry = React.createClass({
   render: function() {
     return (
       <div className="bill-entry-container">
-        <div className="row">
-          <div className="col-xs-8">
-            <p><span className="who-is-owed">{this.props.paymentOwed.ower}</span> owes you </p> 
-            <p><span className="who-is-owed">{formatPrice(this.props.paymentOwed.amount * 100)}</span> for <span className="who-is-owed">{this.props.paymentOwed.billName}</span></p>
-            <p> by {this.getDate()}</p>
-          </div>
-        </div>
+        <p><span className="who-is-owed">{this.props.paymentOwed.ower}</span> owes you
+        <span className="who-is-owed"> {formatPrice(this.props.paymentOwed.amount * 100)}</span> for <span className="who-is-owed">{this.props.paymentOwed.billName}</span></p>
+        <p> by {this.getDate()}</p>
       </div>
     )
   }
@@ -318,8 +312,8 @@ var BillForm = React.createClass({
         <form action="submit" ref='billForm' className="form-group form-bottom" onSubmit=''>
           <div className='input'>
             <div className="input-group full-width-input">
-              <label htmlFor="bill-name">Bill Name</label>
-              <input type="text" id="bill-name" ref='name' className="form-control" />
+              <label htmlFor="bill-name">New Bill Name:</label>
+              <input type="text" id="bill-name" ref='name' placeholder="October Rent" className="form-control" />
             </div>
             <div className="row">
               <div className="col-sm-6">

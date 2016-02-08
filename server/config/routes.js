@@ -69,6 +69,7 @@ module.exports = function(app, express) {
   //Payments
   app.get('/payment/pay', Auth.isLoggedInUser, paymentController.getWhatYouOwe);
   app.get('/payment/owed', Auth.isLoggedInUser, paymentController.getWhatIsOwedToYou);
+  app.get('/payment/owed/:houseId', Auth.isLoggedInUser, paymentController.getPaymentsByHouseId);
   app.get('/payment/completed', Auth.isLoggedInUser, paymentController.getWhatYouHavePaid);
   app.get('/payment/completed/owed', Auth.isLoggedInUser, paymentController.getWhatHasBeenPaidToYou);
   app.post('/payment', Auth.isLoggedInUser, paymentController.postPayment);
