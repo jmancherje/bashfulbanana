@@ -50,16 +50,17 @@ var PropertyAdder = React.createClass({
           <h4>Create / Manage new property</h4>
           <div className="form-group">
             <label htmlFor="house-name">Property Nickname</label>
-            <input className="form-control propertyAdder-input" id="house-name" ref="houseName" type="text" placeholder="House Name"/>
+            <input className="form-control propertyAdder-input" id="house-name" ref="houseName" type="text" placeholder="4F Grand"/>
             <label htmlFor="house-address">Address</label>
-            <input className="form-control propertyAdder-input" id="house-address" ref="address" type="text" placeholder="Address"/>
+            <input className="form-control propertyAdder-input" id="house-address" ref="address" type="text" placeholder="510 Grand Ave, apt 4F, Oakland, CA"/>
             <button className="btn btn-info" type="submit">Submit</button>
           </div>
         </form>
         <form className="propertyAdder-form" ref="claimProp" onSubmit={this.addProperty}>
           <h4>Manage existing property</h4>
           <div className="form-group propertAdder-form">
-            <input className="form-control propertyAdder-input" ref="houseCode" type="text" placeholder="Add House With Token"/>
+            <label htmlFor="house-code">Join house with the house code</label>
+            <input className="form-control propertyAdder-input" id="house-code" ref="houseCode" type="text" placeholder="ex: 52FSEN6NQ9Z"/>
             <button className="btn btn-info" type="submit">Submit</button>
           </div>
         </form>

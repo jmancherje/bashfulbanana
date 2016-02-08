@@ -210,7 +210,7 @@ var PaymentOwedEntry = React.createClass({
   render: function() {
     return (
       <div className="bill-entry-container">
-        <p><span className="who-is-owed">{this.props.paymentOwed.ower}</span> owes you
+        <p><span className="glyphicon glyphicon-unchecked"></span><span className="who-is-owed"> {this.props.paymentOwed.ower}</span> owes you
         <span className="who-is-owed"> {formatPrice(this.props.paymentOwed.amount * 100)}</span> for <span className="who-is-owed">{this.props.paymentOwed.billName}</span></p>
         <p> by {this.getDate()}</p>
       </div>
