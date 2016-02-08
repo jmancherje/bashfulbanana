@@ -390,12 +390,18 @@ div.chore-entry:hover {
 }
 
 .house-name-list:hover {
-  font-weight: 800;
+  background-color: rgba(33,67,92,0.8);
+  border: 1px solid grey;
+  border-radius: 10px;
+  color: white;
 }
 
 .selected-house {
-  font-weight: 800;
-  color: #160098;
+  font-weight: 400;
+  background-color: rgba(33,67,92,0.8);
+  border: 1px solid grey;
+  border-radius: 10px;
+  color: white;
 }
 
 .house-info-header {

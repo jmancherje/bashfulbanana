@@ -63,7 +63,7 @@ var Notify = React.createClass({
     })
     return (
       <div className="message-container">
-        <h2 className="text-center">{`Communicate with ${this.props.currentHouse.name}`}</h2>
+        <h2 className="text-center">{`Chat with ${this.props.currentHouse.name}`}</h2>
         <div className="message-list">
           {messageList}
         </div>

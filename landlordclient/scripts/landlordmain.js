@@ -36,7 +36,6 @@ var App = React.createClass({
   },
 
   componentDidMount: function() {
-    // this.getSession();
     this.getHousesOwned();
     this.getUsers();
     this.getUserImage();
@@ -155,7 +154,7 @@ var App = React.createClass({
             <div className="side-bar-filler">
               <ImageContainer imageUrl={this.state.imageUrl}  />
               <div>
-                <h3 className="text-center">Your Properties</h3>
+                <h4 className="text-center">Choose Property:</h4>
                 <LandlordHouses currentHouse={this.state.currentHouse} switchHouseView={this.switchHouseView} houses={this.state.landlordHouses} />
                 <button className="btn btn-default add-property-button" onClick={function(){context.setState({view: "PropertyAdder"})}}>Add Property</button>
               </div>
@@ -202,7 +201,6 @@ var LandlordHouses = React.createClass({
 
 var ImageContainer = React.createClass({
   render: function() {
-    // var imageNumber = Math.floor(Math.random()*23) + 1;
     return <img height="120px" src={`./images/buildings/building23.png`} />
   }
 });
