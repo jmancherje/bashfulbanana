@@ -36,7 +36,7 @@ var HouseInfo = React.createClass({
     });
     return (
       <div className="house-info-container">
-        <h2 className="text-center">{this.props.currentHouse.name}</h2>
+        <h2 className="text-center">{this.props.currentHouse.name} info</h2>
         <h4 className="house-info-header">Address:</h4>
         <p>{this.props.currentHouse.address}</p>
         <h4 className="house-info-header">House Code</h4>

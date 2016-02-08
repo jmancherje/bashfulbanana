@@ -403,3 +403,9 @@ div.chore-entry:hover {
 .tenant-list {
   list-style: none;
 }
+.propertyAdder-form {
+  margin-top: 25px;
+}
+.propertyAdder-input {
+  margin-bottom: 10px;
+}

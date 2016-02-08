@@ -46,16 +46,22 @@ var PropertyAdder = React.createClass({
   render: function() {
     return (
       <div className="message-container">
-        <form ref="addProp" onSubmit={this.createHouse}>
-          <h3>Add New Property</h3>
-          <input ref="houseName" type="text" placeholder="House Name"/>
-          <input ref="address" type="text" placeholder="Address"/>
-          <button type="submit">Submit</button>
+        <form className="propertyAdder-form" ref="addProp" onSubmit={this.createHouse}>
+          <h4>Create / Manage new property</h4>
+          <div className="form-group">
+            <label htmlFor="house-name">Property Nickname</label>
+            <input className="form-control propertyAdder-input" id="house-name" ref="houseName" type="text" placeholder="House Name"/>
+            <label htmlFor="house-address">Address</label>
+            <input className="form-control propertyAdder-input" id="house-address" ref="address" type="text" placeholder="Address"/>
+            <button className="btn btn-info" type="submit">Submit</button>
+          </div>
         </form>
-        <form ref="claimProp" onSubmit={this.addProperty}>
-          <h3>Manage Existing Property</h3>
-          <input ref="houseCode" type="text" placeholder="Add House With Token"/>
-          <button type="submit">Submit</button>
+        <form className="propertyAdder-form" ref="claimProp" onSubmit={this.addProperty}>
+          <h4>Manage existing property</h4>
+          <div className="form-group propertAdder-form">
+            <input className="form-control propertyAdder-input" ref="houseCode" type="text" placeholder="Add House With Token"/>
+            <button className="btn btn-info" type="submit">Submit</button>
+          </div>
         </form>
       </div>
     )
