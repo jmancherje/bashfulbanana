@@ -39,7 +39,7 @@ var HouseInfo = React.createClass({
         <h2 className="text-center">{this.props.currentHouse.name} info</h2>
         <h4 className="house-info-header">Address:</h4>
         <p>{this.props.currentHouse.address}</p>
-        <h4 className="house-info-header">House Code</h4>
+        <h4 className="house-info-header">Property Code</h4>
         <p>Invite your tenants by sharing this code:</p>
         <p>{this.props.currentHouse.token}</p>
         <h4 className="house-info-header">Current tenants:</h4>
@@ -47,7 +47,7 @@ var HouseInfo = React.createClass({
           <ul className="tenant-list">{tenantList}</ul>
         </div>
         <div className="bottom-button">
-          <button className="btn btn-danger">Remove House</button>
+          <button className="btn btn-danger">Remove Property</button>
         </div>
       </div>
     )
