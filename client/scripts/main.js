@@ -32,7 +32,7 @@ var App = React.createClass({
       houseName: '',
       isLandlord: false,
       initialLoad: true,
-      landlordHouses: [{name: "Robot House", address:"123 road lane", id:4}, {name: "Real World House", address:"466 road street", id: 8}, {name: "Full House", address: "69 road lane", id:5}]
+      landlordHouses: []
     }
   },
 
@@ -88,9 +88,6 @@ var App = React.createClass({
       success: function(session) {
         console.log('session: ', session);
         console.log('typeof session', session);
-        // if (!session) {
-        //   window.location.href = '/login';
-        // }
         localStorage.setItem('obie', session);
         this.state.initialLoad = false;
         this.setState({initialLoad: this.state.initialLoad});
@@ -99,10 +96,6 @@ var App = React.createClass({
         this.getUsers();
       }.bind(this),
       error: function() {
-        // if (!localStorage.getItem('obie')) {
-        //   console.log('no session:')
-        //   window.location.href = '/login';
-        // }
         console.log('error getting session');
       }
     });
