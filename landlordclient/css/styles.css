@@ -30,8 +30,20 @@ html, body {
 #bill-due-date {
   width: 100%;
 }
-.side-bar-filler > {
+.side-bar-filler {
+  width: 90%;
+  padding: 10px;
+  padding-top: 20px;
+  height: 100%;
+  border: 1px solid #E1E8ED;
+  border-radius: 5px;
+  background-color: white;
+}
+.side-bar-filler > img {
+  width: 100%;
   border-radius: 20px;
+  border: 3px solid lightgrey;
+  height: inherit
 }
 .app-container {
   /*margin-top: 30px;*/
@@ -44,19 +56,6 @@ html, body {
 .side-bar-container {
   padding: 0 0 20px 5px;
   height: inherit;
-}
-.side-bar-filler {
-  width: 90%;
-  padding: 10px;
-  height: 100%;
-  border: 1px solid #E1E8ED;
-  border-radius: 5px;
-  background-color: white;
-}
-.side-bar-filler > img {
-  padding-top: 10px;
-  width: 100%;
-  height: inherit
 }
 .main-bar-container {
   background-color: white;
@@ -119,6 +118,12 @@ html, body {
    */
   height: calc(100% - 180px);
   margin-top: 15px;
+}
+.finance-list-house-specific {
+  margin-top: 15px;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .message-form, .form-bottom, .bill-form {
   background-color: white;
@@ -331,8 +336,9 @@ div.chore-entry:hover {
 }
 .completed-payment-container {
   margin-bottom: 7px;
-  padding: 5px;
+  padding: 7px 9px 5px 10px;
   min-height: 42px;
+  border-radius: 10px;
   background-color: rgba(107, 255, 72, 0.1);
 }
 .completed-payment-container:hover {
