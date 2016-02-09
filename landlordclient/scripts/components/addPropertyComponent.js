@@ -21,7 +21,7 @@ var PropertyAdder = React.createClass({
         this.refs.addProp.reset();
       }.bind(this),
       error: function() {
-        alert('Error Creating house. Please try again.');
+        alert('Error Creating property. Please try again.');
       }
     });
   },
@@ -34,11 +34,10 @@ var PropertyAdder = React.createClass({
       headers: {'token': localStorage.getItem('obie')},
       success: function() {
         this.props.getHousesOwned();
-        alert("House added Successfully");
         this.refs.claimProp.reset();
       }.bind(this),
       error: function() {
-        alert('Error adding house. Please check token.');
+        alert('Error adding property. Please check property code.');
       }
     });
   },

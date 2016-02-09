@@ -130,7 +130,7 @@ var ChoreEntry = React.createClass({
               <img className="chore-image" src={image[this.props.chore.category]}></img>
           </div>
           <div className="col-sm-4 col-md-4">
-            <button type='button' className='btn btn-info chore-complete' onClick={this.updateChoreStatus}>Completed</button>
+            <button type='button' className='btn btn-info chore-complete' onClick={this.updateChoreStatus}>Complete</button>
           </div>
       </div>
     )
