@@ -134,6 +134,11 @@ $(document).ready(function() {
   // store session:
   getSession();
 
+  
+  if (!localStorage.getItem('obie')) {
+    window.location.href = '/login';
+  }
+
   // routing to correct form:
   // landlord
   $('#show-landlord').on('click', function() {

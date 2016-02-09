@@ -84,6 +84,10 @@ $(document).ready(function() {
     if (!$('#create-house-form').valid()) {
       return;
     }
+    if (!localStorage.getItem('obie')) {
+      alert('your session expired, please login again to finish registration');
+      window.location.href = '/login';
+    }
     var house = {
       name: $('#house-name').val(),
       address: $('#house-address').val()
@@ -95,6 +99,10 @@ $(document).ready(function() {
   };
 
   var updateLandlordHouseId = function() {
+    if (!localStorage.getItem('obie')) {
+      alert('your session expired, please login again to finish registration');
+      window.location.href = '/login';
+    }
     $.ajax({
       url: '/property/landlord/house',
       type: 'PUT',
