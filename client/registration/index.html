@@ -30,7 +30,9 @@
       font-size: 1.5em;
       font-weight: 300;
     }
-    
+    .join-house-alert {
+      display: none;
+    }
     .left-btn {
       float: left;
     }
@@ -57,8 +59,10 @@
       <hr>
       <form id="create-house-form">
         <div class="form-group">
-          <label for="house-name">House Nickname</label>
-          <input type="text" class="form-control" id="house-name" placeholder="Full House" required>
+          <label for="house-name">Give your property a name:</label>
+          <input type="text" class="form-control" id="house-name" placeholder="2B Grand" required>
+          <label for="house-address">Property Address:</label>
+          <input type="text" class="form-control" id="house-address" placeholder="1440 Grand Ave Apt 2B, San Francisco, CA" required>
         </div>
         <button class="btn btn-info wide-button" id="create-house-submit">Submit</button>
       </form>
@@ -70,6 +74,9 @@
       <hr>
       <form id="join-house-form">
         <div class="form-group">
+          <div class="alert alert-success join-house-alert">
+            <strong>Successfully Created Property!</strong> Share this code with your roommates and click below to join!
+          </div>
           <label for="house-code">House Code</label>
           <input type="text" class="form-control" id="house-code" placeholder="123JFS1" min-length='6' max-length='6'>
         </div>

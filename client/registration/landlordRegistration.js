@@ -66,7 +66,6 @@ $(document).ready(function() {
       headers: {token: localStorage.getItem('obie')},
       success: function(data) {
         var token = data[0].token; 
-        // alert('Your token is ' + token);
         $('#house-code').val(token); 
       },
       error: function(error) {
@@ -159,27 +158,6 @@ $(document).ready(function() {
       }
     })  
   };
-
-  // var findHouse = function(event) {
-  //   // event.preventDefault();
-  //   var houseCode = $('#house-code').val();
-  //   //get request for house with provided houseCode
-  //   $.ajax({
-  //     url: '/houses/' + houseCode,
-  //     type: 'GET',
-  //     contentType: 'application/json',
-  //     success: function(houseId) {
-  //       //if successful, want to call updateUserHouseId
-  //       //with appropriate userId, adding the houseId
-  //       //Need somewhere to store that id when it comes back. 
-  //       // updateUserHouseId(houseId[0].id); 
-  //       updateHouseWithLandlordId(houseCode);
-  //     },
-  //     error: function(error) {
-  //       console.log('error: ', error);
-  //     }
-  //   });
-  // };
 
   // store session:
   getSession();
