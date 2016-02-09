@@ -339,10 +339,10 @@ div.chore-entry:hover {
   padding: 7px 9px 5px 10px;
   min-height: 42px;
   border-radius: 10px;
-  background-color: rgba(107, 255, 72, 0.1);
+  background-color: rgba(107, 255, 72, 0.2);
 }
 .completed-payment-container:hover {
-  background-color: rgba(107, 255, 72, 0.2)
+  background-color: rgba(107, 255, 72, 0.3)
 }
 .pay-button {
   float: right;
