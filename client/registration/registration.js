@@ -57,6 +57,7 @@ $(document).ready(function() {
         var token = data[0].token; 
         $('#house-code').val(token);
         $('.join-house-alert').show(); 
+        $('.join-house-info').hide();
       },
       error: function(error) {
         console.log('error: ', error);

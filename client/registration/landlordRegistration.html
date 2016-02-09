@@ -23,6 +23,9 @@
     #join-house-div {
       display: none;
     }
+    .join-house-alert {
+      display: none;
+    }
     .routing-button {
       width: 49%;
       display: inline-block;
@@ -60,8 +63,14 @@
       <hr>
       <form id="join-house-form">
         <div class="form-group">
-          <label for="house-code">Add the Property Code here to manage an existing property:</label>
-          <input type="text" class="form-control" id="house-code" placeholder="ex: 123JFS1" min-length='6' max-length='6'>
+          <div class="alert alert-success join-house-alert">
+            <strong>Success!</strong> Share this code with your tenants and click below to begin managing your property!
+          </div>
+          <div class="alert alert-info join-house-info">
+            <strong>Welcome!</strong> If your tenants are already using the app, enter their property code here to begin managing your property!
+          </div>
+          <label for="house-code">Property Code:</label>
+          <input type="text" class="form-control" id="house-code" placeholder="ex: BZ3JFS1T4EP" min-length='11' max-length='11'>
         </div>
         <button class="btn btn-info wide-button" id="join-house-submit">Begin Managing Property!</button>
         <button class="btn btn-success wide-button" id="create-house-btn">Or Add a new Property</button>

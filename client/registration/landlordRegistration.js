@@ -66,6 +66,8 @@ $(document).ready(function() {
       headers: {token: localStorage.getItem('obie')},
       success: function(data) {
         var token = data[0].token; 
+        $('.join-house-alert').show(); 
+        $('.join-house-info').hide();
         $('#house-code').val(token); 
       },
       error: function(error) {
