@@ -1,9 +1,10 @@
-var mobileChoreModel = require('../models/mobileChoreModel.js');
+var choreModel = require('../models/choreModel.js');
 
-module.export = {
-  get: function(req, res){ 
-    var params = [houseId];
-    mobileChoreModel.get(params, function(err, results) {
+module.exports = {
+  get: function(req, res){
+    console.log('got here')
+    var params = [req.params.houseId];
+    choreModel.get(params, function(err, results) {
       if(err){
         res.sendStatus(500);
       }
@@ -14,22 +15,11 @@ module.export = {
   post: function (req, res) {
     console.log('POST CHORES TOKEN: ', token);   
     var params = [req.body.userId, req.body.name, req.body.category, req.body.dueDate, houseId];
-    mobileChoreModel.post(params, function (err, results) {
+    choreModel.post(params, function (err, results) {
       if (err) {
         res.sendStatus(500);
       }
-      res.status(201).json(results.insertId);
+      res.status(201).json(results);
     });
   },
-
-  delete: function (req, res) {
-    var params = [req.params.choreId];
-    mobileChoreModel.delete(params, function(err, results) {
-      if (err) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    })
-  }
 }

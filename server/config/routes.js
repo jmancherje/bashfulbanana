@@ -22,20 +22,20 @@ module.exports = function(app, express) {
 
   app.post('/api/mobile/messages', mobileMessageController.post);
   app.get('/api/mobile/users/:email', mobileUserController.getUserHouseIdWithEmail);
+  app.get('/api/mobile/users/:houseId', mobileUserController.getUsersInHouse);
   app.get('/api/mobile/messages/:houseId', mobileMessageController.get);
+
   app.get('/api/mobile/bills/:userId', mobileMessageController.getBills)
   app.get('/api/mobile/payments/:userId', mobileMessageController.getPayments)
   app.get('/api/mobile/users/:houseId', mobileMessageController.getUsers)
 
-// //mobile messages
-  
+  app.get('/api/mobile/chores/:houseId', mobileChoreController.get);
 
   // //mobile chores
   // app.get('/api/mobile/chores', mobileChoreController.get);
   // app.post('/api/mobile/chores', mobileChoreController.post);
   // app.put('/api/mobile/chores/:choreId', mobileChoreController.put);
   // app.delete('/api/mobile/chores/:choreId', mobileChoreController.delete);
-
 
   app.use(passport.initialize());
   app.use(passport.session());
@@ -64,7 +64,6 @@ module.exports = function(app, express) {
     });
   });
 
-  
   //Users
   app.get('/users/', userController.getUsersInHouse);
   app.get('/users/venmo/:venmoId', userController.findUserByVenmoId);
