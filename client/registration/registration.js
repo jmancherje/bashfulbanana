@@ -20,7 +20,6 @@ $(document).ready(function() {
       type: 'GET',
       contentType: 'application/json',
       success: function(session) {
-        console.log('got initial session from registration page');
         localStorage.setItem('obie', session);
       }.bind(this),
       error: function() {
@@ -36,7 +35,6 @@ $(document).ready(function() {
       headers: {token: localStorage.getItem('obie')},
       contentType: 'application/json',
       success: function(session) {
-        console.log('updated the session: ', session);
         localStorage.setItem('obie', session);
         window.location.href ='/';
       }.bind(this),
@@ -53,7 +51,6 @@ $(document).ready(function() {
       contentType: 'application/json',
       headers: {token: localStorage.getItem('obie')},
       success: function(data) {
-        console.log(token);
         var token = data[0].token; 
         $('#house-code').val(token);
         $('.join-house-alert').show(); 

@@ -15,7 +15,6 @@
         headers: {token: localStorage.getItem('obie')},
         contentType: 'application/json',
         success: function(route) {
-          console.log('route: ', route);
           window.location.href = '/' + route;
         },
         error: function() {
@@ -29,7 +28,6 @@
       type: 'GET',
       contentType: 'application/json',
       success: function(session) {
-        console.log('session: ', session);
         console.log('typeof session', session);
         localStorage.setItem('obie', session);
         redirect();

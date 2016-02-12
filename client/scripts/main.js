@@ -57,7 +57,6 @@ var App = React.createClass({
       contentType: 'application/json',
       headers: {'token': localStorage.getItem('obie')},
       success: function(users) {
-        console.log('getting users: ', users);
         this.state.users = users; 
         this.setState({users: this.state.users}); 
       }.bind(this)
@@ -88,8 +87,6 @@ var App = React.createClass({
       type: 'GET',
       contentType: 'application/json',
       success: function(session) {
-        console.log('session: ', session);
-        console.log('typeof session', session);
         localStorage.setItem('obie', session);
         this.state.initialLoad = false;
         this.setState({initialLoad: this.state.initialLoad});
@@ -155,7 +152,6 @@ var App = React.createClass({
     $('.toggle-house-code').toggle('slow');
   },
   renderView: function(view) {
-    console.log('view: ', view);
     this.setState({view: view});
   },
   render: function() {

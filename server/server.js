@@ -80,13 +80,11 @@ passport.use(new VenmoStrategy({
     obj.venmoid = venmo.id;
     obj.userImageUrl = venmo._json.profile_picture_url || null;
 
-    console.log("VENMO", venmo);
 
     var jtObj = {};
     jtObj.email = venmo.email;
     jtObj.access_token = accessToken;
 
-    console.log("URL", process.env.Base_URL +'/users/venmo/'+ venmo.id)
     request.get(process.env.Base_URL +'/users/venmo/'+ venmo.id, function(err, resp, body) {
 
       if (!err && resp.statusCode == 200) {

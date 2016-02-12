@@ -28,7 +28,6 @@ var LandlordMessageContainer = React.createClass({
       headers: {'token': localStorage.getItem('obie')},
       success: function(messages) {
         this.setState({messages: messages});
-        console.log(messages);
       }.bind(this),
       error: function(err) {
         console.log(err);

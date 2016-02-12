@@ -17,12 +17,9 @@ module.exports = {
   },
 
   decodeJwt: function(req, res, next) {
-    console.log('decoding jwt.. req.headers.token: ', req.headers.token);
     if (!req.headers.token) {
-      console.log('no header, redirecting to /login')
       res.send('login');
     } else {
-      console.log('valid header..')
       var token = jwt.decode(req.headers.token, process.env.secret_code);
       req.user = token;
       next();
@@ -30,12 +27,9 @@ module.exports = {
   },
 
   rootDecodeJwt: function(req, res, next) {
-    console.log('decoding jwt.. req.headers.token: ', req.headers.token);
     if (!req.headers.token) {
-      console.log('no header, redirecting to /login')
       res.send('login');
     } else {
-      console.log('valid header..')
       var token = jwt.decode(req.headers.token, process.env.secret_code);
       req.user = token;
       next();

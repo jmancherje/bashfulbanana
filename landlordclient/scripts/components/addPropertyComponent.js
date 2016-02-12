@@ -9,7 +9,6 @@ var PropertyAdder = React.createClass({
     var obj = {};
     obj.name = this.refs.houseName.value;
     obj.address = this.refs.address.value;
-    console.log(obj, "OB");
     $.ajax({
       url: '/properties/create',
       type: 'POST',

@@ -86,7 +86,6 @@ var pendingBills = React.createClass({
   //also need info on who owes what for the bill (checklist)
   
   addBill: function(bill) {
-    console.log("Add Bill")
     $.ajax({
       url: '/payment/bill',
       headers: {'token': localStorage.getItem('obie')},
@@ -101,7 +100,6 @@ var pendingBills = React.createClass({
   },
 
   addPayment: function(payment) {
-    console.log("Add Payment")
     $.ajax({
       url: '/payment',
       headers: {'token': localStorage.getItem('obie')},
@@ -120,8 +118,6 @@ var pendingBills = React.createClass({
     var users = this.state.users;
     //iterate through users
     for(var i = 0; i < users.length; i++) {
-      //console.log('USER', users[i]);
-      //find the ones selected
       if(users[i].selected === true) {
         //create payment object
         var payment = {
@@ -132,17 +128,9 @@ var pendingBills = React.createClass({
         this.addPayment(payment);
         this.getUsers();
         setTimeout(this.loadPayments, 500);
-        // console.log(users[i]);
-        // console.log('PAYMENT', payment)
       }
     }
   },
-
-  // name
-  // total
-  // dueDate
-  // payee_username
-  // payee_userId
 
   loadBills: function() {
     var token = localStorage.getItem('obie'); 
@@ -152,7 +140,6 @@ var pendingBills = React.createClass({
       contentType: 'application/json',
       headers: {'token': token},
       success: function(bills) {
-        console.log("bills", bills)
         this.state.bills = bills; 
         this.setState({bills: this.state.bills});
       }.bind(this),
@@ -182,7 +169,7 @@ var pendingBills = React.createClass({
     var context = this;
     var billList = this.state.bills.map(function(item, i) {
       return <BillEntry loadBills={context.loadBills} key={i} bill={item} />
-    }); 
+    });
     var paymentsOwedList = this.state.paymentsOwed.map(function(item, i) {
       return <PaymentOwedEntry key={i} paymentOwed={item} />
     });
@@ -228,7 +215,6 @@ var BillEntry = React.createClass({
   },
 
   makeVenmoPayment: function(venmoData) {
-    console.log("venmo DATA", venmoData);
     $.ajax({
       url: '/auth/venmo/payment',
       headers: {'token': localStorage.getItem('obie')},
@@ -236,7 +222,6 @@ var BillEntry = React.createClass({
       data: JSON.stringify(venmoData),
       contentType: 'application/json',
       success: function(data) {
-        console.log("venmo paid", "venmo data id", venmoData.id);
         this.markPaymentAsPaid(venmoData.id);
       }.bind(this)
     });
@@ -249,7 +234,6 @@ var BillEntry = React.createClass({
       headers: {'token': localStorage.getItem('obie')},
       contentType: 'application/json',
       success: function(data) {
-        console.log("payment marked");
         this.props.loadBills();
       }.bind(this)
     });
@@ -276,7 +260,6 @@ var BillEntry = React.createClass({
 var PaymentOwedEntry = React.createClass({
   getDate: function() {
     var date = h.getDate(this.props.paymentOwed.dueDate);
-    console.log(date);
     return `${date.month}/${date.day}/${date.year}`;
   },
   render: function() {
@@ -303,7 +286,6 @@ var BillHistory = React.createClass({
 var PaymentHistory = React.createClass({
   getDate: function() {
     var date = h.getDate(this.props.history.dueDate);
-    console.log(date);
     return `${date.month}/${date.day}/${date.year}`;
   },
   render: function() {

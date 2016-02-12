@@ -48,7 +48,6 @@ $(document).ready(function() {
       headers: {token: localStorage.getItem('obie')},
       contentType: 'application/json',
       success: function(session) {
-        console.log('session: ', session);
         localStorage.setItem('obie', session);
         window.location.href ='/';
       }.bind(this),
@@ -109,7 +108,6 @@ $(document).ready(function() {
       headers: {token: localStorage.getItem('obie')},
       contentType: 'application/json',
       success: function(data) {
-        console.log('updated landlord houseid');
         updateLandLordToken(); 
       },
       error: function(error) {

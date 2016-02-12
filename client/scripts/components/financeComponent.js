@@ -77,7 +77,6 @@ var FinanceContainer = React.createClass({
   },
 
   addBill: function(bill) {
-    console.log("Add Bill")
     $.ajax({
       url: '/payment/bill',
       headers: {'token': localStorage.getItem('obie')},
@@ -93,7 +92,6 @@ var FinanceContainer = React.createClass({
   },
 
   addPayment: function(payment) {
-    console.log("Add Payment")
     $.ajax({
       url: '/payment',
       headers: {'token': localStorage.getItem('obie')},
@@ -103,7 +101,6 @@ var FinanceContainer = React.createClass({
       success: function(data) {
         // this.loadPayments()
         socket.emit('bill');
-        console.log("payment added");
       }
     });
   },
@@ -135,7 +132,6 @@ var FinanceContainer = React.createClass({
       contentType: 'application/json',
       headers: {'token': localStorage.getItem('obie')},
       success: function(bills) {
-        console.log("bills", bills)
         this.state.bills = bills; 
         this.setState({bills: this.state.bills});
       }.bind(this),
@@ -221,7 +217,6 @@ var BillEntry = React.createClass({
   },
 
   makeVenmoPayment: function(venmoData) {
-    console.log("venmo DATA", venmoData);
     $.ajax({
       url: '/auth/venmo/payment',
       headers: {'token': localStorage.getItem('obie')},
@@ -229,7 +224,6 @@ var BillEntry = React.createClass({
       data: JSON.stringify(venmoData),
       contentType: 'application/json',
       success: function(data) {
-        console.log("venmo paid", "venmo data id", venmoData.id);
         this.markPaymentAsPaid(venmoData.id);
         socket.emit('bill');
       }.bind(this)
@@ -243,7 +237,6 @@ var BillEntry = React.createClass({
       headers: {'token': localStorage.getItem('obie')},
       contentType: 'application/json',
       success: function(data) {
-        console.log("payment marked");
         this.props.loadBills();
       }.bind(this)
     });
@@ -319,7 +312,6 @@ var BillForm = React.createClass({
   },
   splitEvenly: function(event) {
     event.preventDefault();
-    console.log("SPLIT EVENLY");
     //access this.refs.amount.value
     var amount = this.refs.total.value;
     //divide total by number of roommates 
@@ -332,12 +324,10 @@ var BillForm = React.createClass({
       //invert selected property
       this.props.users[i].selected = true;
     };
-    console.log('USERS', this.props.users);
     this.createBill(null, true);
   },
   customSplit: function(event) {
     event.preventDefault();
-    console.log("CUSTOM SPLIT");
     var updateSplitEvenly = this.state.splitEvenly ? false : true;
     if (this.state.splitEvenly) {
       updateSplitEvenly = false;
@@ -353,7 +343,6 @@ var BillForm = React.createClass({
   createBill: function(event, splitEvenly) {
     //prevent default event action
     if (splitEvenly !== true) splitEvenly = false;
-    console.log("CREATE BILL, split evenly: ", splitEvenly);
     if (event) {
       event.preventDefault();
     }
@@ -380,11 +369,7 @@ var BillForm = React.createClass({
       dueDate: this.refs.dueDate.value
     };
 
-    console.log("CUSTOM TOTAL", customTotal);
-    console.log("Bill Total", parseFloat(bill.total))
-    console.log("split", splitEvenly);
     if(!splitEvenly && customTotal >= parseFloat(bill.total)) {
-      console.log('custom total: ', customTotal);
       // $('<div id="failure" class="alert alert-danger"><strong>Nerd!</strong> Get better at math.</div>').insertBefore('#bill-submit');
       $('#failure').show();
     } else {
@@ -457,7 +442,6 @@ var UserEntry = React.createClass({
   setValue: function(id) {
     this.props.user.selected = true;
     this.props.user.total = this.refs[id].value;
-    console.log('this.refs[id].value', !this.refs[id].value);
     if (!this.refs[id].value) {
       this.props.user.selected = false;
     }

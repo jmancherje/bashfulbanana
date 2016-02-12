@@ -14,7 +14,6 @@
         headers: {token: localStorage.getItem('obie')},
         contentType: 'application/json',
         success: function(route) {
-          console.log('route: ', route);
           window.location.href = '/' + route;
         },
         error: function() {
@@ -33,7 +32,6 @@
         contentType: 'application/json',
         success: function(token) {
           localStorage.setItem('obie', token)
-          console.log('shoudl be a token: ', token);
           redirect();
         },
         error: function() {
@@ -48,8 +46,6 @@
         contentType: 'application/json',
         success: function(session) {
           // replacing good token with an empty session.
-          console.log('session: ', session);
-          console.log('typeof session', session);
           localStorage.setItem('obie', session);
           redirect();
           // should redirect here IF already have a valid token
@@ -58,12 +54,7 @@
           console.log('error getting session');
         }
       });
-      
     }
-
-
-
-
   </script>
 
 <body>

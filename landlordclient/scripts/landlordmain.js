@@ -48,7 +48,6 @@ var App = React.createClass({
       contentType: 'application/json',
       headers: {'token': localStorage.getItem('obie')},
       success: function(houses) {
-        console.log("HOUSES OWNED", houses);
         this.setState({landlordHouses: houses});
         this.setState({currentHouse: houses[0]});
         this.setState({initialLoad: false});
@@ -67,7 +66,6 @@ var App = React.createClass({
       contentType: 'application/json',
       headers: {'token': localStorage.getItem('obie')},
       success: function(users) {
-        console.log('getting users: ', users);
         this.state.users = users; 
         this.setState({users: this.state.users}); 
       }.bind(this)
@@ -123,11 +121,9 @@ var App = React.createClass({
         var currentHouse = this.state.landlordHouses.filter(function(house, index) {
           return house.id == object.houseId;
         });
-        console.log('new current house: ', currentHouse);
         this.setState({currentHouse: currentHouse[0]});
         this.getUserImage();
         this.getUsers();
-        console.log("GREAT SUCCESS");
         var view = this.state.view;
         this.renderView('Dummy');
         this.renderView(view);
@@ -141,7 +137,6 @@ var App = React.createClass({
     $('.toggle-house-code').toggle('slow');
   },
   renderView: function(view) {
-    console.log('view: ', view);
     this.setState({view: view});
   },
   render: function() {
@@ -179,7 +174,6 @@ var LandlordHouses = React.createClass({
 // can look at changing this to houseid or house token
   isActive: function(houseId) {
     var classes = "lead house-name-list"
-    console.log(this.props.currentHouse, houseId);
     if (this.props.currentHouse.id === houseId) {
       classes = classes + ' selected-house';
     }
