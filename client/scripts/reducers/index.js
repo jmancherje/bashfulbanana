@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux'
+import { changeView } from './ui_reducer'
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  changeView
+});
 
 export default rootReducer
 
@@ -12,7 +15,10 @@ exapmle state:
 state = {
   ui: {
     isLandlord: boolean,
-    currentView: string,
+    currentView: {
+      render: 'house_info',
+      text: 'House Info'
+    },
     username: string,
     house: {
       code: string,
@@ -28,7 +34,8 @@ state = {
     landlordMessages: Array of message objects,
     counters: {
       messages: Number,
-      landlordMessages: Number,
+      chores: Number,
+      contact_landlord: Number,
       finances: Number
     }
   }
