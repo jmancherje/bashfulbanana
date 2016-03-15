@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { Router, Route, History } from 'react-router';
 import { createHistory } from 'history';
 import NavBar from './components/navbarComponent'
+// views constants
+import views from './components/config/views'
 // tenant components
 import MessageContainer from './components/messageComponent'
 import ChoreContainer from './components/choreComponent'
