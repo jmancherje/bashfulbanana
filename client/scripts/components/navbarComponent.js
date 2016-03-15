@@ -1,11 +1,78 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import h from '../helpers';
+import React, { Component } from 'react'
+import $ from 'jquery'
+import h from '../helpers'
 
-var socket = io();
+const socket = io()
 
 // create classes
+// class NavBar2 extends Component {
+//   constructor() {
+//     return {
+//       newMessages: 0,
+//       newLandlordMessages: 0,
+//       newFinance: 0,
+//       newChores: 0
+//     }
+//   }
+
+//   componentDidMount() {
+//     const context = this
+//     socket.on('message', () => {
+//       if (context.props.view !== "Messages") {
+//         context.state.newMessages++;
+//         context.setState({newMessages: context.state.newMessages});
+//       }
+//     })
+//     socket.on('llmessage', () => {
+//       if (context.props.view !== "Contact Landlord") {
+//         context.state.newLandlordMessages++;
+//         context.setState({newLandlordMessages: context.state.newLandlordMessages});
+//       }  
+//     });
+//     socket.on('chore', () => {
+//       if (context.props.view !== "Chores") {
+//         context.state.newChores++;
+//         context.setState({newChores: context.state.newChores});
+//       }  
+//     });
+//     socket.on('bill', () => {
+//       if (context.props.view !== "Finances") {
+//         context.state.newFinance++;
+//         context.setState({newFinance: context.state.newFinance});
+//       }  
+//     });
+//   }
+
+//   resetCount(view) {
+//     if (view === "Messages") {
+//       this.setState({newMessages:0})
+//     } else if (view === "Contact Landlord") {
+//       this.setState({newLandlordMessages:0})
+//     } else if (view === "Finances") {
+//       this.setState({newFinance:0})
+//     } else if (view === "Chores") {
+//       this.setState({newChores:0})
+//     }
+//   }
+
+//   render() {
+//     return (
+//       <nav className="navbar navbar-default">
+//         <div className="container-fluid col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+//           <div className="navbar-header">
+//             <NavMenu 
+//               count={this.state}
+//               changeView={this.props.changeView}
+//               links={this.props.links}
+//               resetCount={this.resetCount}
+//             />
+//           </div>
+//         </div>
+//       </nav>
+//     );
+//   }
+// }
+
 var NavBar = React.createClass({
   getInitialState: function() {
     return {
