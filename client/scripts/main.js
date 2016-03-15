@@ -12,6 +12,9 @@ import ChoreContainer from './components/choreComponent'
 import FinanceContainer from './components/financeComponent'
 import LandlordMessageContainer from './components/messageLandlordComponent'
 
+
+import NavBar2 from './containers/Navbar'
+
 var navbar = {};
 navbar.links = [
   {render: "Message", text: "Messages"},
